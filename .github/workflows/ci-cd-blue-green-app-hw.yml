@@ -88,8 +88,6 @@ jobs:
 
       - name: Install Kubectl (Az)
         uses: azure/setup-kubectl@v3
-#        with:
-#          version: '<version>' # default is latest stable
         id: install
 
       - name: AWS credentials
@@ -103,29 +101,9 @@ jobs:
         run: |
           aws eks update-kubeconfig --name ${{ env.AWS_CLUSTER_NAME }} --region ${{ env.AWS_REGION }}
 
-#      - name: Install kubectl
-#        run: |
-#          curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl
-#          chmod +x ./kubectl
-#          sudo mv ./kubectl /usr/local/bin/kubectl
-#
-#      - name: Configure kubectl for EKS
-#        run: |
-#          aws eks update-kubeconfig --name ${{ env.AWS_CLUSTER_NAME }} --region ${{ env.AWS_REGION }}
-#          kubectl config use-context ${{ env.AWS_CLUSTER_NAME }}
-
       - name: Check kubectl existance
         run: |
           kubectl config get-contexts
-
-#      - name: Trigger app deployment
-#        uses: statsig-io/kubectl-via-eksctl@main
-#        env:
-#          aws_access_key_id: ${{ secrets.MY_AWS_ACCESS_KEY_ID }}
-#          aws_secret_access_key: ${{ secrets.MY_AWS_SECRET_ACCESS_KEY }}
-#          region: ${{ env.AWS_REGION }}
-#          cluster: ${{ env.AWS_CLUSTER_NAME }}
-
 
       - name: Create namespace & set in Kustomize
         run: |
