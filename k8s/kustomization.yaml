@@ -8,4 +8,4 @@ namespace: python-app-blue
 images:
 - name: hello-gitops
   newName: onazart/hello-gitops
-  newTag: 39dc6455f75d30f9693755b8bd64e8b80ad83942
+  newTag: 64c329101b9bca6b182697f32a450e060573bda5
